@@ -73,6 +73,7 @@ namespace PDDLBenchmarkPlans
                 return;
             sb.Append($"--plan-file \"{planFile}\" ");
             sb.Append($"--sas-file \"{Path.Combine($"{new FileInfo(problem).Name}".Replace(".pddl", "")).Replace("\\", "/")}.sas\" ");
+            sb.Append($"--overall-time-limit 1m ");
             sb.Append($"--alias lama-first ");
             sb.Append($"\"{domain}\" ");
             sb.Append($"\"{problem}\" ");
