@@ -8,7 +8,7 @@ namespace PDDLBenchmarkPlans
     internal class Program
     {
         public static string FastDownward = "/mnt/c/Users/kris7/OneDrive/Programming/University/P9/Dependencies/fast-downward/fast-downward.py";
-        public static string TargetFolder = "../../../../Plans";
+        public static string TargetFolder = "../../../../lama-first";
 
         static void Main(string[] args)
         {
@@ -73,10 +73,9 @@ namespace PDDLBenchmarkPlans
                 return;
             sb.Append($"--plan-file \"{planFile}\" ");
             sb.Append($"--sas-file \"{Path.Combine($"{new FileInfo(problem).Name}".Replace(".pddl", "")).Replace("\\", "/")}.sas\" ");
-
+            sb.Append($"--alias lama-first ");
             sb.Append($"\"{domain}\" ");
             sb.Append($"\"{problem}\" ");
-            sb.Append($"--search \"lazy_greedy([ff(), cea()], [ff(), cea()])\"");
 
             var process = new Process
             {
