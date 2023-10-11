@@ -1,0 +1,8 @@
+(wait )
+(open sd10)
+(open sd11)
+(close cb3)
+(open sd22)
+(open sd24)
+(close cb5)
+; cost = 7 (unit cost)

@@ -1,0 +1,3 @@
+(do-roll a0)
+(do-lathe b0)
+; cost = 2 (unit cost)

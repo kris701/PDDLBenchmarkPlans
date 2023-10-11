@@ -1,0 +1,6 @@
+(do-lathe a0)
+(do-immersion-paint b0 black)
+(do-roll c0)
+(do-time-step )
+(do-immersion-paint c0 black)
+; cost = 5 (unit cost)

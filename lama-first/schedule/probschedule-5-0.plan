@@ -1,0 +1,6 @@
+(do-polish b0)
+(do-lathe d0)
+(do-immersion-paint a0 blue)
+(do-time-step )
+(do-immersion-paint d0 yellow)
+; cost = 5 (unit cost)
