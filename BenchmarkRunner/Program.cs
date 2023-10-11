@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
+using System.Xml.Linq;
 
 namespace PDDLBenchmarkPlans
 {
@@ -15,6 +16,7 @@ namespace PDDLBenchmarkPlans
             Console.WriteLine("Fetching benchmarks");
             var targetPath = GitFetcher.CheckAndDownloadBenchmarksAsync("https://github.com/aibasel/downward-benchmarks", "benchmarks").Result;
 
+            Console.WriteLine("Scanning benchmarks");
             List<string> names = new List<string>();
             Dictionary<string, List<string>> _testDict = new Dictionary<string, List<string>>();
             foreach (var domainPath in Directory.GetDirectories(targetPath))
@@ -38,18 +40,29 @@ namespace PDDLBenchmarkPlans
             if (!Directory.Exists(TargetFolder))
                 Directory.CreateDirectory(TargetFolder);
 
+            Console.WriteLine("Executing benchmarks");
             int count = 0;
             int total = GetDictionarySize(_testDict);
-            int index = 0;
+            int index = -1;
             foreach (var domain in _testDict.Keys)
             {
+                index++;
+                if (!Directory.Exists(Path.Combine(TargetFolder, names[index])))
+                    Directory.CreateDirectory(Path.Combine(TargetFolder, names[index]));
+                else
+                {
+                    Console.WriteLine($"Domain '{names[index]}' already there, skipping...");
+                    count += _testDict[domain].Count;
+                    continue;
+                }
+
+                Console.WriteLine($"Domain '{names[index]}' started");
                 foreach (var problem in _testDict[domain])
                 {
                     Console.WriteLine($"Running {count} out of {total}");
                     SampleDomainProblemCombinationAsync(domain, problem, names[index]);
                     count++;
                 }
-                index++;
             }
         }
 
@@ -63,8 +76,6 @@ namespace PDDLBenchmarkPlans
 
         private static void SampleDomainProblemCombinationAsync(string domain, string problem, string name)
         {
-            if (!Directory.Exists(Path.Combine(TargetFolder, name)))
-                Directory.CreateDirectory(Path.Combine(TargetFolder, name));
 
             StringBuilder sb = new StringBuilder("");
             sb.Append($"{FastDownward} ");
