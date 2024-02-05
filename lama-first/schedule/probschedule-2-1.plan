@@ -1,3 +1,0 @@
-(do-immersion-paint a0 yellow)
-(do-spray-paint b0 blue)
-; cost = 2 (unit cost)

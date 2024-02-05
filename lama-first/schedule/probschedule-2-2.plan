@@ -1,3 +1,0 @@
-(do-lathe a0)
-(do-immersion-paint b0 yellow)
-; cost = 2 (unit cost)

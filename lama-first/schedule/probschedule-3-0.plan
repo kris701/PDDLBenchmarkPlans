@@ -1,5 +1,0 @@
-(do-grind c0)
-(do-lathe a0)
-(do-time-step )
-(do-immersion-paint a0 yellow)
-; cost = 4 (unit cost)

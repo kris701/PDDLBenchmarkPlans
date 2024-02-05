@@ -1,7 +1,0 @@
-(wait )
-(open sd12)
-(open sd16)
-(close sd5)
-(open sd17)
-(close sd18)
-; cost = 6 (unit cost)
